@@ -12,8 +12,8 @@ CREATE TABLE equipment (
     categoryID INT NOT NULL,
     description VARCHAR(255),
     dailyCost DECIMAL(10,2) NOT NULL,
-    status VARCHAR(100) NOT NULL
-    FOREIGN KEY (category_id) REFERENCES category(category_id)
+    status VARCHAR(100) NOT NULL,
+    FOREIGN KEY (categoryID) REFERENCES category(categoryID)
 );
 
 CREATE TABLE customer (
@@ -33,8 +33,8 @@ CREATE TABLE rental (
     rentalDate DATE NOT NULL,
     returnDate DATE NOT NULL,
     cost DECIMAL(10,2) NOT NULL,
-    FOREIGN KEY (customer_id) REFERENCES customer(customer_id),
-    FOREIGN KEY (equipment_id) REFERENCES equipment(equipment_id)
+    FOREIGN KEY (customerID) REFERENCES customer(customerID),
+    FOREIGN KEY (equipmentID) REFERENCES equipment(equipmentID)
 );
 
 INSERT INTO category (categoryID, name) VALUES
@@ -44,12 +44,12 @@ INSERT INTO category (categoryID, name) VALUES
 (40, 'Generators'),
 (50, 'Air Tools');
 
-INSERT INTO equipment (equipmentID, name, categoryID, description, dailyCost,status) VALUES
-(101, 10, 'Hammer drill', 'Powerful drill for concrete and masonry', 25.99),
-(201, 20, 'Chainsaw', 'Gas-powered chainsaw for cutting wood', 49.99),
-(202, 20, 'Lawn mower', 'Self-propelled lawn mower with mulching function', 19.99),
-(301, 30, 'Small Compressor', '5 Gallon Compressor-Portable', 14.99),
-(501, 50, 'Brad Nailer', 'Brad Nailer. Requires 3/4 to 1 1/2 Brad Nails', 10.99);
+INSERT INTO equipment (equipmentID, name, categoryID, description, dailyCost, status) VALUES
+(101, 'Hammer drill', 10, 'Powerful drill for concrete and masonry', 25.99, 'Available'),
+(201, 'Chainsaw', 20, 'Gas-powered chainsaw for cutting wood', 49.99, 'Available'),
+(202, 'Lawn mower', 20, 'Self-propelled lawn mower with mulching function', 19.99, 'Available'),
+(301, 'Small Compressor', 30, '5 Gallon Compressor-Portable', 14.99, 'Available'),
+(501, 'Brad Nailer', 50, 'Brad Nailer. Requires 3/4 to 1 1/2 Brad Nails', 10.99, 'Available');
 
 INSERT INTO customer (customerID, firstName, lastName, contactPhone, email, isBanned) VALUES
 (1001, 'John', 'Doe', '(555) 555-1212', 'jd@sample.net','N'),
