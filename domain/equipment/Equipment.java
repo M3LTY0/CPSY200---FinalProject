@@ -1,24 +1,21 @@
 package domain.equipment;
 public class Equipment {
     
-    public Equipment(int equipmentID, String name, Category category, String description, float dailyCost,
-            String categoryName, Status status) {
+    public Equipment(int equipmentID, String name, int categoryID, String description, float dailyCost, String status) {
         this.equipmentID = equipmentID;
         this.name = name;
-        this.category = category;
+        this.categoryID = categoryID;
         this.description = description;
         this.dailyCost = dailyCost;
-        this.categoryName = categoryName;
         this.status = status;
     }
 
     private int equipmentID;
     private String name;
-    private Category category;
+    private int categoryID;
     private String description;
     private float dailyCost;
-    private String categoryName;
-    private Status status;
+    private String status;
     
     public int getEquipmentID() {
         return equipmentID;
@@ -32,11 +29,11 @@ public class Equipment {
     public void setName(String name) {
         this.name = name;
     }
-    public Category getCategory() {
-        return category;
+    public int getCategoryID() {
+        return categoryID;
     }
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategoryID(int categoryID) {
+        this.categoryID = categoryID;
     }
     public String getDescription() {
         return description;
@@ -50,16 +47,10 @@ public class Equipment {
     public void setDailyCost(float dailyCost) {
         this.dailyCost = dailyCost;
     }
-    public String getCategoryName() {
-        return categoryName;
-    }
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
-    }
-    public Status getStatus() {
+    public String getStatus() {
         return status;
     }
-    public void setStatus(Status status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

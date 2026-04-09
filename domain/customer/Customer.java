@@ -1,8 +1,7 @@
 package domain.customer;
 public class Customer{
 
-    public Customer(int customerID, String firstName, String lastName, int contactPhone, String email,
-            Boolean isBanned) {
+    public Customer(int customerID, String firstName, String lastName, int contactPhone, String email,String isBanned) {
         this.customerID = customerID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -16,7 +15,7 @@ public class Customer{
     private String lastName;
     private int contactPhone;
     private String email;
-    private Boolean isBanned;
+    private String isBanned;
     
     public int getCustomerID() {
         return customerID;
@@ -48,10 +47,10 @@ public class Customer{
     public void setEmail(String email) {
         this.email = email;
     }
-    public Boolean getIsBanned() {
+    public String getIsBanned() {
         return isBanned;
     }
-    public void setIsBanned(Boolean isBanned) {
+    public void setIsBanned(String isBanned) {
         this.isBanned = isBanned;
     }
 

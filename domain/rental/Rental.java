@@ -2,15 +2,15 @@ package domain.rental;
 public class Rental {
     
     public Rental(int rentalID, int customerID, int equipmentID, String currentDate, String rentalDate,
-            String returnDate) {
+            String returnDate, float cost) {
         this.rentalID = rentalID;
         this.customerID = customerID;
         this.equipmentID = equipmentID;
         this.currentDate = currentDate;
         this.rentalDate = rentalDate;
         this.returnDate = returnDate;
+        this.cost = cost;
     }
-
 
     private int  rentalID;
     private int customerID;
@@ -18,6 +18,7 @@ public class Rental {
     private String currentDate;
     private String rentalDate;
     private String returnDate;
+    private float cost;
     
     public int getRentalID() {
         return rentalID;
@@ -55,6 +56,14 @@ public class Rental {
     public void setReturnDate(String returnDate) {
         this.returnDate = returnDate;
     }
+    public float getCost() {
+        return cost;
+    }
+    public void setCost(float cost) {
+        this.cost = cost;
+    }
+
+    
 
     
     
