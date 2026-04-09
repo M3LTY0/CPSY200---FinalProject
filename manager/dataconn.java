@@ -7,7 +7,7 @@ import domain.customer.Customer;
 import domain.equipment.Equipment;
 import domain.rental.Rental;
 
-public class db {
+public class dataconn {
 
     private Connection conn = null;
     private ArrayList<Customer> Customers = new ArrayList<>();
@@ -19,7 +19,7 @@ public class db {
     private final String USERNAME = "root";
     private final String PASSWORD = "password";
 
-    public db() {
+    public dataconn() {
         connect();
     }
 
@@ -268,7 +268,7 @@ public class db {
         }
     }
 
-    public void deleteERentalsql(int rentalID) {
+    public void deleteRentalsql(int rentalID) {
         String sql = "DELETE FROM rental WHERE rentalID=?";
         try {
             PreparedStatement pst = prepared(sql);

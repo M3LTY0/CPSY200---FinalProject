@@ -1,8 +1,7 @@
 package domain.rental;
 public class Rental {
     
-    public Rental(int rentalID, int customerID, int equipmentID, String currentDate, String rentalDate,
-            String returnDate, float cost) {
+    public Rental(int rentalID, int customerID, int equipmentID, String currentDate, String rentalDate, String returnDate, float cost) {
         this.rentalID = rentalID;
         this.customerID = customerID;
         this.equipmentID = equipmentID;
