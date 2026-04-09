@@ -53,7 +53,13 @@ public class Equipment {
     public void setStatus(String status) {
         this.status = status;
     }
+    @Override
+    public String toString() {
+        return "Equipment [equipmentID=" + equipmentID + ", name=" + name + ", categoryID=" + categoryID
+                + ", description=" + description + ", dailyCost=" + dailyCost + ", status=" + status + "]";
+    }
 
+    
     
 
     

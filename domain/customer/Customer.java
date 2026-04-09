@@ -53,6 +53,11 @@ public class Customer{
     public void setIsBanned(String isBanned) {
         this.isBanned = isBanned;
     }
+    @Override
+    public String toString() {
+        return "Customer [customerID=" + customerID + ", firstName=" + firstName + ", lastName=" + lastName
+                + ", contactPhone=" + contactPhone + ", email=" + email + ", isBanned=" + isBanned + "]";
+    }
 
     
 

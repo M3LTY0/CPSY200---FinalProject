@@ -20,6 +20,13 @@ public class Category {
         this.name = name;
     }
 
+    @Override
+    public String toString() {
+        return "Category [categoryID=" + categoryID + ", name=" + name + "]";
+    }
+
+    
+
     
     
 }

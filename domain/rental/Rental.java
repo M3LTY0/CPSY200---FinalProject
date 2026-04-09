@@ -61,6 +61,14 @@ public class Rental {
     public void setCost(float cost) {
         this.cost = cost;
     }
+    @Override
+    public String toString() {
+        return "Rental [rentalID=" + rentalID + ", customerID=" + customerID + ", equipmentID=" + equipmentID
+                + ", currentDate=" + currentDate + ", rentalDate=" + rentalDate + ", returnDate=" + returnDate
+                + ", cost=" + cost + "]";
+    }
+
+    
 
     
 
