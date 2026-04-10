@@ -92,7 +92,7 @@ public class RentalManager {
             if(iter.getRentalID()==rentalID)
                 return iter;
         }
-        throw new RentalNotFoundException("No rental foudn with ID: "+rentalID);
+        throw new RentalNotFoundException("No rental found with ID: "+rentalID);
 
     }
 
