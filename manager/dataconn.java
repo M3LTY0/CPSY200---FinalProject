@@ -82,9 +82,9 @@ public class dataconn {
                         rs.getInt("customerID"),
                         rs.getString("firstName"),
                         rs.getString("lastName"),
-                        rs.getInt("contactPhone"),
+                        rs.getString("contactPhone"),
                         rs.getString("email"),
-                        rs.getString("isBanned")
+                        rs.getBoolean("isBanned")
                 ));
             }
         } catch (SQLException e) {
@@ -93,16 +93,16 @@ public class dataconn {
         return Customers;
     }
 
-    public void addCustomersql(int customerID, String firstName, String lastName, int contactPhone, String email, String isBanned){
+    public void addCustomersql(int customerID, String firstName, String lastName, String contactPhone, String email, boolean isBanned){
         String sql = "INSERT INTO customer(customerID, firstName, lastName, contactPhone, email, isBanned) VALUES (?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement pst = prepared(sql);
             pst.setInt(1, customerID);
             pst.setString(2, firstName);
             pst.setString(3, lastName);
-            pst.setInt(4, contactPhone);
+            pst.setString(4, contactPhone);
             pst.setString(5, email);
-            pst.setString(6, isBanned);
+            pst.setBoolean(6, isBanned);
             int count = updated(pst);
             System.out.println(count + " row inserted");
         } catch (SQLException e) {
@@ -110,15 +110,15 @@ public class dataconn {
         }
     }
 
-    public void updateCustomersql(int customerID, String firstName, String lastName, int contactPhone, String email, String isBanned) {
+    public void updateCustomersql(int customerID, String firstName, String lastName, String contactPhone, String email, boolean isBanned) {
         String sql = "UPDATE customer SET firstName=?, lastName=?, contactPhone=?, email=?, isBanned=? WHERE customerID=?";
         try {
             PreparedStatement pst = prepared(sql);
             pst.setString(1, firstName);
             pst.setString(2, lastName);
-            pst.setInt(3, contactPhone);
+            pst.setString(3, contactPhone);
             pst.setString(4, email);
-            pst.setString(5, isBanned);
+            pst.setBoolean(5, isBanned);
             pst.setInt(6, customerID);
             int count = updated(pst);
             System.out.println(count + " row updated");

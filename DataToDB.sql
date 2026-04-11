@@ -22,7 +22,7 @@ CREATE TABLE customer (
     lastName VARCHAR(100) NOT NULL,
     contactPhone VARCHAR(25) NOT NULL,
     email VARCHAR(100) NOT NULL,
-    isBanned VARCHAR(1) NOT NULL
+    isBanned BOOLEAN NOT NULL
 );
 
 CREATE TABLE rental (
@@ -52,9 +52,9 @@ INSERT INTO equipment (equipmentID, name, categoryID, description, dailyCost, st
 (501, 'Brad Nailer', 50, 'Brad Nailer. Requires 3/4 to 1 1/2 Brad Nails', 10.99, 'Available');
 
 INSERT INTO customer (customerID, firstName, lastName, contactPhone, email, isBanned) VALUES
-(1001, 'John', 'Doe', '(555) 555-1212', 'jd@sample.net','N'),
-(1002, 'Jane', 'Smith', '(555) 555-3434', 'js@live.com','N'),
-(1003, 'Michael', 'Lee',  '(555) 555-5656', 'ml@sample.net','N');
+(1001, 'John', 'Doe', '(555) 555-1212', 'jd@sample.net','false'),
+(1002, 'Jane', 'Smith', '(555) 555-3434', 'js@live.com','false'),
+(1003, 'Michael', 'Lee',  '(555) 555-5656', 'ml@sample.net','false');
 
 INSERT INTO rental (rentalID, customerID, equipmentID, currentDate, rentalDate, returnDate, cost) VALUES
 (1000, 1001, 201, '2024-02-15', '2024-02-20', '2024-02-23', 149.97),

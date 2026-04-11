@@ -11,7 +11,7 @@ public class CustomerManager {
     dataconn data = new dataconn();
     public ArrayList<Customer> custList = data.getCustomerList();
 
-    public void addCustomer(int customerID, String firstName, String lastName, int contactPhone, String email,String isBanned){
+    public void addCustomer(int customerID, String firstName, String lastName, String contactPhone, String email, boolean isBanned){
         Customer add = new Customer(customerID, firstName, lastName, contactPhone, email, isBanned);
         data.addCustomersql(customerID, firstName, lastName, contactPhone, email, isBanned);
         custList.add(add);
@@ -65,14 +65,13 @@ public class CustomerManager {
                 select.setLastName(input.nextLine());
             } else if (choice == 4) {
                 System.out.println("Please enter new value for phone");
-                select.setContactPhone(input.nextInt());
-                input.nextLine();
+                select.setContactPhone(input.nextLine());
             } else if (choice == 5) {
                 System.out.println("Please enter new value for email");
                 select.setEmail(input.nextLine());
             }else if (choice == 6) {
                 System.out.println("Please enter new value for banned");
-                select.setIsBanned(input.nextLine());
+                select.setIsBanned(input.nextBoolean());
             }
 
         } while (choice != 0);
@@ -89,7 +88,7 @@ public class CustomerManager {
         throw new CustomerNotFoundException("No customer found with ID: "+customerID);
     }
 
-    ArrayList<Customer> getCustomerList(){
+    public ArrayList<Customer> getCustomerList(){
         return custList;
     }
 }
