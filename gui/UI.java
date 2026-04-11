@@ -3,24 +3,31 @@ package gui;
 import java.util.Scanner;
 
 import domain.customer.Customer;
+import domain.equipment.Equipment;
 import exceptions.CustomerNotFoundException;
+import exceptions.EquipmentNotFoundException;
 import manager.CustomerManager;
+import manager.EquipmentManager;
 
 public class UI {
     static Scanner input = new Scanner(System.in);
 
-    public static void main(String[] args) throws CustomerNotFoundException {
+    public static void main(String[] args) throws CustomerNotFoundException, EquipmentNotFoundException {
         mainMenu();
     }
 
-    public static void mainMenu() throws CustomerNotFoundException {
+    public static void mainMenu() throws CustomerNotFoundException, EquipmentNotFoundException {
         CustomerManager CM = new CustomerManager();
+        EquipmentManager EM = new EquipmentManager();
         System.out.println("---------------------------");
         System.out.println("Welcome to Village Rentals!");
         System.out.println("---------------------------");
         int choice = -1;
         do {
-            System.out.println("\nPlease choose an option:");
+            System.out.println("\n---------");
+            System.out.println("Home Page");
+            System.out.println("---------");
+            System.out.println("Please choose an option:");
             System.out.println("1: Customer page");
             System.out.println("2: Equipment page");
             System.out.println("3: Rental page");
@@ -93,10 +100,80 @@ public class UI {
                     }
                 } while (customerChoice != 0);
             } else if (choice == 2) {
+                int equipmentChoice = -1;
+                do {
+                    System.out.println("\n--------------");
+                    System.out.println("Equipment Page");
+                    System.out.println("--------------");
+                    System.out.println("Please choose an option:");
+                    System.out.println("1: Add equipment");
+                    System.out.println("2: Search for equipment");
+                    System.out.println("3: Update equipment");
+                    System.out.println("4: Sell equipment");
+                    System.out.println("5: Remove equipment");
+                    System.out.println("6: Show all equipment");
+                    System.out.println("0: Back to Home Page");
+
+                    equipmentChoice = input.nextInt();
+                    input.nextLine();
+
+                    if (equipmentChoice == 1) {
+                        System.out.print("Enter the equipment ID: ");
+                        int equipmentID = input.nextInt();
+                        input.nextLine();
+
+                        System.out.print("Enter the equipment name: ");
+                        String name = input.nextLine();
+
+                        System.out.print("Enter the category ID: ");
+                        int categoryID = input.nextInt();
+                        input.nextLine();
+
+                        System.out.print("Enter the description: ");
+                        String description = input.nextLine();
+
+                        System.out.print("Enter the daily cost: ");
+                        float dailyCost = input.nextFloat();
+
+                        System.out.print("Enter the status: ");
+                        String status = input.nextLine();
+
+                        EM.addEquipment(equipmentID, name, categoryID, description, dailyCost, status);
+                        System.out.println(name + " was added to the system");
+                    } else if (equipmentChoice == 2) {
+                        System.out.print("Enter an equipment ID: ");
+                        int equipmentID = input.nextInt();
+                        Equipment e = EM.searchEquipment(equipmentID);
+                        System.out.println(e.toString());
+                    } else if (equipmentChoice == 3) {
+                        System.out.print("Enter an equipment ID: ");
+                        int equipmentID = input.nextInt();
+                        EM.updateEquipment(equipmentID);
+                        Equipment e = EM.searchEquipment(equipmentID);
+                        System.out.println("Equipment was updated");
+                    } else if (equipmentChoice == 4) {
+                        System.out.print("Enter an equipment ID: ");
+                        int equipmentID = input.nextInt();
+                        EM.sellEquipment(equipmentID);
+                    } else if (equipmentChoice == 5) {
+                        System.out.print("Enter an equipment ID: ");
+                        int equipmentID = input.nextInt();
+                        EM.removeEquipment(equipmentID);
+                        System.out.println("The equipment was removed");
+                    } else if (equipmentChoice == 6) {
+                        for (Equipment e : EM.equipList) {
+                            System.out.println(e.toString());
+                        }
+                    } else if (equipmentChoice != 0) {
+                        System.out.println("Please choose a valid option");
+                    }
+                } while (equipmentChoice != 0);
                 System.out.println("Equipment Page");
             } else if (choice == 3) {
+                int rentalChoice = -1;
                 System.out.println("Rental Page");
             } else if (choice == 4) {
+                int reportChoice = -1;
                 System.out.println("Report Page");
             } else if (choice != 0) {
                 System.out.println("Please choose a valid option");
