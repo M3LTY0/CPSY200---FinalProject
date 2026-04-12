@@ -10,13 +10,13 @@ public class RentalManager {
     dataconn data = new dataconn();
     public ArrayList<Rental> rentList = data.getRentalList();
 
-    void addRental(int rentalID, int customerID, int equipmentID, String currentDate, String rentalDate, String returnDate, float cost){
+    public void addRental(int rentalID, int customerID, int equipmentID, String currentDate, String rentalDate, String returnDate, float cost){
         Rental add = new Rental(rentalID, customerID, equipmentID, currentDate, rentalDate, returnDate, cost);
         data.addRentalsql(rentalID, customerID, equipmentID, currentDate, rentalDate, returnDate, cost);
         rentList.add(add);
         }
 
-    void removeRental(int rentalID){
+    public void removeRental(int rentalID){
         Rental select = null;
         try {
             select = searchRental(rentalID);
@@ -29,7 +29,7 @@ public class RentalManager {
         rentList.remove(select);
     }
 
-    void updateRental(int rentalID){
+    public void updateRental(int rentalID){
         Rental select = null;
         try {
             select = searchRental(rentalID);
@@ -86,7 +86,7 @@ public class RentalManager {
         data.updateRentalsql(select.getRentalID(), select.getCustomerID(), select.getEquipmentID(), select.getCurrentDate(), select.getRentalDate(), select.getReturnDate(), select.getCost());
     }
 
-    Rental searchRental(int rentalID) throws RentalNotFoundException{
+    public Rental searchRental(int rentalID) throws RentalNotFoundException{
 
         for(Rental iter:rentList){
             if(iter.getRentalID()==rentalID)
