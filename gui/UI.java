@@ -4,21 +4,25 @@ import java.util.Scanner;
 
 import domain.customer.Customer;
 import domain.equipment.Equipment;
+import domain.rental.Rental;
 import exceptions.CustomerNotFoundException;
 import exceptions.EquipmentNotFoundException;
+import exceptions.RentalNotFoundException;
 import manager.CustomerManager;
 import manager.EquipmentManager;
+import manager.RentalManager;
 
 public class UI {
     static Scanner input = new Scanner(System.in);
 
-    public static void main(String[] args) throws CustomerNotFoundException, EquipmentNotFoundException {
+    public static void main(String[] args) throws CustomerNotFoundException, EquipmentNotFoundException, RentalNotFoundException {
         mainMenu();
     }
 
-    public static void mainMenu() throws CustomerNotFoundException, EquipmentNotFoundException {
+    public static void mainMenu() throws CustomerNotFoundException, EquipmentNotFoundException, RentalNotFoundException {
         CustomerManager CM = new CustomerManager();
         EquipmentManager EM = new EquipmentManager();
+        RentalManager RM = new RentalManager();
         System.out.println("---------------------------");
         System.out.println("Welcome to Village Rentals!");
         System.out.println("---------------------------");
@@ -168,10 +172,74 @@ public class UI {
                         System.out.println("Please choose a valid option");
                     }
                 } while (equipmentChoice != 0);
-                System.out.println("Equipment Page");
             } else if (choice == 3) {
                 int rentalChoice = -1;
-                System.out.println("Rental Page");
+                do {
+                    System.out.println("\n-----------");
+                    System.out.println("Rental Page");
+                    System.out.println("-----------");
+                    System.out.println("Please choose an option:");
+                    System.out.println("1: Add a rental");
+                    System.out.println("2: Search for a rental");
+                    System.out.println("3: Update a rental");
+                    System.out.println("4: Remove a rental");
+                    System.out.println("5: Show all rentals");
+                    System.out.println("0: Back to Home Page");
+
+                    rentalChoice = input.nextInt();
+                    input.nextLine();
+
+                    if (rentalChoice == 1) {
+                        System.out.print("Enter the rental ID: ");
+                        int rentalID = input.nextInt();
+                        input.nextLine();
+
+                        System.out.print("Enter the customer ID: ");
+                        int customerID = input.nextInt();
+                        input.nextLine();
+
+                        System.out.print("Enter the equipment ID: ");
+                        int equipmentID = input.nextInt();
+                        input.nextLine();
+
+                        System.out.print("Enter the current date: ");
+                        String currentDate = input.nextLine();
+
+                        System.out.print("Enter the rental date: ");
+                        String rentalDate = input.nextLine();
+
+                        System.out.print("Enter the return date: ");
+                        String returnDate = input.nextLine();
+
+                        System.out.print("Enter the cost: ");
+                        float cost = input.nextFloat();
+
+                        RM.addRental(rentalID, customerID, equipmentID, currentDate, rentalDate, returnDate, cost);
+                        System.out.println("Rental " + rentalID + " was added to the system");
+                    } else if (rentalChoice == 2) {
+                        System.out.print("Enter a rental ID: ");
+                        int rentalID = input.nextInt();
+                        Rental r = RM.searchRental(rentalID);
+                        System.out.println(r.toString());
+                    } else if (rentalChoice == 3) {
+                        System.out.print("Enter a rental ID: ");
+                        int rentalID = input.nextInt();
+                        RM.updateRental(rentalID);
+                        Rental r = RM.searchRental(rentalID);
+                        System.out.println("Rental was updated");
+                    } else if (rentalChoice == 4) {
+                        System.out.print("Enter a rental ID: ");
+                        int rentalID = input.nextInt();
+                        RM.removeRental(rentalID);
+                        System.out.println("The rental was removed");
+                    } else if (rentalChoice == 5) {
+                        for (Rental r : RM.rentList) {
+                            System.out.println(r.toString());
+                        }
+                    } else if (rentalChoice != 0) {
+                        System.out.println("Please choose a valid option");
+                    }
+                } while (rentalChoice != 0);
             } else if (choice == 4) {
                 int reportChoice = -1;
                 System.out.println("Report Page");
