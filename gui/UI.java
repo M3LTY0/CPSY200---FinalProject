@@ -11,6 +11,7 @@ import exceptions.RentalNotFoundException;
 import manager.CustomerManager;
 import manager.EquipmentManager;
 import manager.RentalManager;
+import reporting.Reports;
 
 public class UI {
     static Scanner input = new Scanner(System.in);
@@ -23,6 +24,7 @@ public class UI {
         CustomerManager CM = new CustomerManager();
         EquipmentManager EM = new EquipmentManager();
         RentalManager RM = new RentalManager();
+        Reports reports = new Reports();
         System.out.println("---------------------------");
         System.out.println("Welcome to Village Rentals!");
         System.out.println("---------------------------");
@@ -242,7 +244,35 @@ public class UI {
                 } while (rentalChoice != 0);
             } else if (choice == 4) {
                 int reportChoice = -1;
-                System.out.println("Report Page");
+                do {
+                    System.out.println("\n-----------");
+                    System.out.println("Report Page");
+                    System.out.println("-----------");
+                    System.out.println("Please choose an option:");
+                    System.out.println("1: List items by category");
+                    System.out.println("2: List sales by date");
+                    System.out.println("3: List sales by customer");
+                    System.out.println("0: Back to Home Page");
+
+                    reportChoice = input.nextInt();
+                    input.nextLine();
+
+                    if (reportChoice == 1) {
+                        System.out.print("Enter a category ID: ");
+                        int categoryID = input.nextInt();
+                        reports.getItems(categoryID);
+                    } else if (reportChoice == 2) {
+                        System.out.print("Enter a date (yyyy-mm-dd): ");
+                        String date = input.nextLine();
+                        reports.getSales(date);
+                    } else if (reportChoice == 3) {
+                        System.out.print("Enter a customer ID: ");
+                        int customerID = input.nextInt();
+                        reports.getSales(customerID);
+                    } else if (reportChoice != 0) {
+                        System.out.println("Please choose a valid option");
+                    }
+                } while (reportChoice != 0);
             } else if (choice != 0) {
                 System.out.println("Please choose a valid option");
             }

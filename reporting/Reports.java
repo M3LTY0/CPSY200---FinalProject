@@ -13,29 +13,29 @@ public class Reports {
     CustomerManager cm = new CustomerManager();
     RentalManager rm = new RentalManager();
 
-    void getItems(int categoryID){
+    public void getItems(int categoryID){
         for(Equipment iter : em.equipList){
             if(iter.getCategoryID()==categoryID){
-                iter.toString();
+                System.out.println(iter.toString());
 
             }
         }
     }
 
-    void getSales(String date){
+    public void getSales(String date){
         for(Rental iter : rm.rentList){
             if(iter.getRentalDate().equals(date)){
-                iter.toString();
+                System.out.println(iter.toString());
             }
         }
 
 
     }
 
-    void getSales(int customerID){
+    public void getSales(int customerID){
          for(Rental iter : rm.rentList){
             if(iter.getCustomerID()==customerID){
-                iter.toString();
+                System.out.println(iter.toString());
             }
         }
     }
