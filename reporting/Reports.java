@@ -9,9 +9,15 @@ import manager.RentalManager;
 
 public class Reports {
 
-    EquipmentManager em = new EquipmentManager();
-    CustomerManager cm = new CustomerManager();
-    RentalManager rm = new RentalManager();
+    EquipmentManager em;
+    CustomerManager cm;
+    RentalManager rm;
+
+    public Reports(CustomerManager cm, EquipmentManager em,  RentalManager rm) {
+        this.cm = cm;
+        this.em = em;
+        this.rm = rm;
+    }
 
     public void getItems(int categoryID){
         for(Equipment iter : em.equipList){

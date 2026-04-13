@@ -24,7 +24,7 @@ public class UI {
         CustomerManager CM = new CustomerManager();
         EquipmentManager EM = new EquipmentManager();
         RentalManager RM = new RentalManager();
-        Reports reports = new Reports();
+        Reports reports = new Reports(CM, EM, RM);
         System.out.println("---------------------------");
         System.out.println("Welcome to Village Rentals!");
         System.out.println("---------------------------");
